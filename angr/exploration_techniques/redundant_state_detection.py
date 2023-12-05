@@ -1,6 +1,8 @@
 from difflib import SequenceMatcher
 from collections import Counter
 
+from angr.angr.analyses.reaching_definitions.dep_graph import DepGraph
+
 from . import ExplorationTechnique
 
 
@@ -29,6 +31,8 @@ class RedundantStateDetector(ExplorationTechnique):
         self.relevant_symb_loc = {}         # dict from Symbols to branch loc
         self.test_input = []
         self.rel_loc_sets = set()
+        self.visited = set()                # set of visited states
+        self.graph = DepGraph()
         
     def get_input(self):
         return self.test_input.copy()
@@ -38,18 +42,40 @@ class RedundantStateDetector(ExplorationTechnique):
             simgr.stashes[self.deferred_stash] = []
         if self.relevant_stash not in simgr.stashes:
             simgr.stashes[self.relevant_stash] = []
+        self.last_state = simgr.stashes["active"][0]
 
     def step(self, simgr, stash="active", **kwargs):
         simgr = simgr.step(stash=stash, **kwargs)
 
         if len(simgr.stashes[stash]) > 1:
-            self._random.shuffle(simgr.stashes[stash])
             simgr.split(from_stash=stash, to_stash=self.deferred_stash, limit=1)
 
+        # if reaches an deadend
         if len(simgr.stashes[stash]) == 0:
-            if len(simgr.stashes[self.deferred_stash]) == 0:
+            # we shall compute for the input for that
+            input_data = self.last_state.posix.stdin.load(0, self.last_state.posix.stdin.size)
+            self.last_state.solver.eval(input_data)
+            self.test_input.append(input_data)
+            if len(simgr.stashes[self.deferred_stash]) == 0:      
                 return simgr
             simgr.stashes[stash].append(simgr.stashes[self.deferred_stash].pop())
+
+        # now only has one stash
+        curr_state = simgr.stashes[stash][0]
+        
+        # first update the datadependency graph:
+        self.UpdateDynamicDepGraph(curr_state)
+        if curr_state not in self.visited:
+            # mark the code visited:
+            self.visited.add(curr_state)
+            self.UpdateRelBranchSet(curr_state)
+            self.RefineRelLocSets(curr_state)
+        
+        # deadend would make stash has 0 elements, we don't need to handle that
+        if self.find_match(curr_state):
+            ConstructRelLocSets(curr_state)
+            input_data = curr_state.posix.stdin.load(0, state1.posix.stdin.size)
+
         return simgr
     
     @staticmethod
@@ -75,10 +101,12 @@ class RedundantStateDetector(ExplorationTechnique):
 
     def UpdateDynamicDepGraph(self, state):
         # a graph that stores all states dependency
-        pass
+        self.graph.add_node(state)
+        self.graph.add_edge(self.last_state,state)
+        
 
-    def FindMatch(self, state):
-        pass
+    def find_match(self, state)->bool:
+        # compare the current 
 
     def ConstructRelLocSets(self, state):
         # its implementation depends on how we define our graph

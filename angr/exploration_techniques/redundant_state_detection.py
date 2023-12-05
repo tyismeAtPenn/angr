@@ -49,6 +49,7 @@ class RedundantStateDetector(ExplorationTechnique):
 
         if len(simgr.stashes[stash]) > 1:
             simgr.split(from_stash=stash, to_stash=self.deferred_stash, limit=1)
+            return simgr
 
         # if reaches an deadend
         if len(simgr.stashes[stash]) == 0:
@@ -81,6 +82,7 @@ class RedundantStateDetector(ExplorationTechnique):
     @staticmethod
     def is_branch(self,state) -> bool:
         # TODO: find a way to decide whether it is on a branch
+        dummy_state = 
         curr_inst = state.solver.eval(state.regs.pc)
         if curr_inst.mnemonic.startswith("cmp"):
             return True

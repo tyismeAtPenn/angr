@@ -2,61 +2,131 @@ Analysis Results
 -----------------
 
 File: ./crackme/crackme0x00
-Final State - BFS: []
-Final State - DFS: []
-Final State - KLEE: []
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': [<SimState @ <BV32 packet_0_stdin_4_480[231:224] .. packet_0_stdin_4_480[239:232] .. packet_0_stdin_4_480[247:240] .. packet_0_stdin_4_480[255:248]>>, <SimState @ <BV32 packet_0_stdin_4_480[231:224] .. packet_0_stdin_4_480[239:232] .. packet_0_stdin_4_480[247:240] .. packet_0_stdin_4_480[255:248]>>]})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': [<SimState @ <BV32 packet_0_stdin_4_480[231:224] .. packet_0_stdin_4_480[239:232] .. packet_0_stdin_4_480[247:240] .. packet_0_stdin_4_480[255:248]>>, <SimState @ <BV32 packet_0_stdin_4_480[231:224] .. packet_0_stdin_4_480[239:232] .. packet_0_stdin_4_480[247:240] .. packet_0_stdin_4_480[255:248]>>]})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': [<SimState @ <BV32 packet_0_stdin_18_480[231:224] .. packet_0_stdin_18_480[239:232] .. packet_0_stdin_18_480[247:240] .. packet_0_stdin_18_480[255:248]>>, <SimState @ <BV32 packet_0_stdin_18_480[231:224] .. packet_0_stdin_18_480[239:232] .. packet_0_stdin_18_480[247:240] .. packet_0_stdin_18_480[255:248]>>], 'deferred': []})
 
-Execution Time - BFS: 3.2060837745666504 seconds
-Execution Time - DFS: 2.620335102081299 seconds
-Execution Time - KLEE: 2.798835039138794 seconds
+Execution Time - BFS: 3.183753728866577 seconds
+Execution Time - DFS: 2.589111804962158 seconds
+Execution Time - KLEE: 2.78946852684021 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 File: ./crackme/crackme0x01
-Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': [], 'deferred': []})
 
-Execution Time - BFS: 0.45047616958618164 seconds
-Execution Time - DFS: 0.564661979675293 seconds
-Execution Time - KLEE: 0.6095027923583984 seconds
+Execution Time - BFS: 0.5586874485015869 seconds
+Execution Time - DFS: 0.4636387825012207 seconds
+Execution Time - KLEE: 0.6157915592193604 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 File: ./crackme/crackme0x02
-Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': [], 'deferred': []})
 
-Execution Time - BFS: 0.658632755279541 seconds
-Execution Time - DFS: 0.59588623046875 seconds
-Execution Time - KLEE: 0.6365900039672852 seconds
+Execution Time - BFS: 0.660846471786499 seconds
+Execution Time - DFS: 0.5926573276519775 seconds
+Execution Time - KLEE: 0.6750180721282959 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 File: ./crackme/crackme0x03
-Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
-Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x8201050>, <SimState @ 0x8201050>], 'unconstrained': [], 'deferred': []})
 
-Execution Time - BFS: 1.270606517791748 seconds
-Execution Time - DFS: 1.2301881313323975 seconds
-Execution Time - KLEE: 2.1168088912963867 seconds
+Execution Time - BFS: 1.243624210357666 seconds
+Execution Time - DFS: 1.2795672416687012 seconds
+Execution Time - KLEE: 1.7170367240905762 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 File: ./crackme/crackme0x04
-Final State - BFS: [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>]
-Final State - DFS: [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>]
-Final State - KLEE: [<SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x601058>]
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>], 'unconstrained': [], 'deferred': []})
 
-Execution Time - BFS: 0.7464864253997803 seconds
-Execution Time - DFS: 0.7183878421783447 seconds
-Execution Time - KLEE: 0.8208918571472168 seconds
+Execution Time - BFS: 0.722346305847168 seconds
+Execution Time - DFS: 0.767737627029419 seconds
+Execution Time - KLEE: 0.8071396350860596 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 File: ./crackme/crackme0x05
-Final State - BFS: [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>]
-Final State - DFS: [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>]
-Final State - KLEE: [<SimState @ 0x801058>, <SimState @ 0x801058>, <SimState @ 0x700030>]
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>], 'unconstrained': [], 'deferred': []})
 
-Execution Time - BFS: 0.7631738185882568 seconds
-Execution Time - DFS: 0.9048812389373779 seconds
-Execution Time - KLEE: 0.8516411781311035 seconds
+Execution Time - BFS: 0.913581132888794 seconds
+Execution Time - DFS: 0.7924678325653076 seconds
+Execution Time - KLEE: 0.8317523002624512 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/easy1
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 2.0379221439361572 seconds
+Execution Time - DFS: 2.217571258544922 seconds
+Execution Time - KLEE: 2.1539080142974854 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/easy2
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 2.169243335723877 seconds
+Execution Time - DFS: 2.2823469638824463 seconds
+Execution Time - KLEE: 2.3820505142211914 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/path1
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 2.163013458251953 seconds
+Execution Time - DFS: 1.9881484508514404 seconds
+Execution Time - KLEE: 2.0086429119110107 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/path2
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 2.079704999923706 seconds
+Execution Time - DFS: 1.9398670196533203 seconds
+Execution Time - KLEE: 1.9900453090667725 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/path3
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 14.418479442596436 seconds
+Execution Time - DFS: 14.595133304595947 seconds
+Execution Time - KLEE: 14.094105958938599 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/sanity1
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 0.2910878658294678 seconds
+Execution Time - DFS: 0.25350046157836914 seconds
+Execution Time - KLEE: 0.2785799503326416 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/test3
+Final State - BFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - DFS: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': []})
+Final State - KLEE: defaultdict(<class 'list'>, {'active': [], 'stashed': [], 'pruned': [], 'unsat': [], 'errored': [], 'deadended': [<SimState @ 0x601050>, <SimState @ 0x601050>], 'unconstrained': [], 'deferred': []})
+
+Execution Time - BFS: 0.9615895748138428 seconds
+Execution Time - DFS: 0.9513673782348633 seconds
+Execution Time - KLEE: 0.9366536140441895 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

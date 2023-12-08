@@ -24,7 +24,7 @@ with open(output_file_path, 'w') as output_file:
         start_time = time.time()
         simgr.run()
         end_time = time.time()
-        final_states_BFS = simgr.deadended
+        final_states_BFS = simgr.stashes
         execution_time_technique_BFS = end_time - start_time
 
         simgr = proj.factory.simulation_manager(state)
@@ -32,7 +32,7 @@ with open(output_file_path, 'w') as output_file:
         start_time = time.time()
         simgr.run()
         end_time = time.time()
-        final_states_DFS = simgr.deadended
+        final_states_DFS = simgr.stashes
         execution_time_technique_DFS = end_time - start_time
 
         simgr = proj.factory.simulation_manager(state)
@@ -40,7 +40,7 @@ with open(output_file_path, 'w') as output_file:
         start_time = time.time()
         simgr.run()
         end_time = time.time()
-        final_states_KLEE = simgr.deadended
+        final_states_KLEE = simgr.stashes
         execution_time_technique_KLEE = end_time - start_time
 
         output_file.write(f"Final State - BFS: {final_states_BFS}\n")

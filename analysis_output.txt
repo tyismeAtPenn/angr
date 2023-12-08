@@ -1,0 +1,62 @@
+Analysis Results
+-----------------
+
+File: ./crackme/crackme0x00
+Final State - BFS: []
+Final State - DFS: []
+Final State - KLEE: []
+
+Execution Time - BFS: 3.2060837745666504 seconds
+Execution Time - DFS: 2.620335102081299 seconds
+Execution Time - KLEE: 2.798835039138794 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/crackme0x01
+Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+
+Execution Time - BFS: 0.45047616958618164 seconds
+Execution Time - DFS: 0.564661979675293 seconds
+Execution Time - KLEE: 0.6095027923583984 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/crackme0x02
+Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+
+Execution Time - BFS: 0.658632755279541 seconds
+Execution Time - DFS: 0.59588623046875 seconds
+Execution Time - KLEE: 0.6365900039672852 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/crackme0x03
+Final State - BFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - DFS: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+Final State - KLEE: [<SimState @ 0x8201050>, <SimState @ 0x8201050>]
+
+Execution Time - BFS: 1.270606517791748 seconds
+Execution Time - DFS: 1.2301881313323975 seconds
+Execution Time - KLEE: 2.1168088912963867 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/crackme0x04
+Final State - BFS: [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>]
+Final State - DFS: [<SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>, <SimState @ 0x500018>]
+Final State - KLEE: [<SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x500018>, <SimState @ 0x601058>, <SimState @ 0x601058>]
+
+Execution Time - BFS: 0.7464864253997803 seconds
+Execution Time - DFS: 0.7183878421783447 seconds
+Execution Time - KLEE: 0.8208918571472168 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+File: ./crackme/crackme0x05
+Final State - BFS: [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>]
+Final State - DFS: [<SimState @ 0x801058>, <SimState @ 0x700030>, <SimState @ 0x801058>]
+Final State - KLEE: [<SimState @ 0x801058>, <SimState @ 0x801058>, <SimState @ 0x700030>]
+
+Execution Time - BFS: 0.7631738185882568 seconds
+Execution Time - DFS: 0.9048812389373779 seconds
+Execution Time - KLEE: 0.8516411781311035 seconds
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

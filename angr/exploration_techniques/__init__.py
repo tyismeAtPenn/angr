@@ -138,7 +138,7 @@ from .spiller import Spiller
 from .manual_mergepoint import ManualMergepoint
 from .tech_builder import TechniqueBuilder
 from .stochastic import StochasticSearch
-from .unique import UniqueSearch
+from angr.exploration_techniques.unique import UniqueSearch
 from .symbion import Symbion
 from ..errors import AngrError, AngrExplorationTechniqueError
 from .memory_watcher import MemoryWatcher
@@ -146,6 +146,7 @@ from .bucketizer import Bucketizer
 from .local_loop_seer import LocalLoopSeer
 from .timeout import Timeout
 from .suggestions import Suggestions
+from angr.exploration_techniques.klee_coverage_optimization_algorithm import KLEERandPathSelection
 
 __all__ = (
     "ExplorationTechnique",
@@ -173,4 +174,5 @@ __all__ = (
     "LocalLoopSeer",
     "Timeout",
     "Suggestions",
+    "KLEERandPathSelection",
 )

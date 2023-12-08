@@ -1,9 +1,9 @@
 from difflib import SequenceMatcher
 from collections import Counter
 
-from angr.angr.analyses.reaching_definitions.dep_graph import DepGraph
-from angr.angr.sim_state import SimState
-from angr.angr.state_plugins.solver import SimSolver
+from angr.analyses.reaching_definitions.dep_graph import DepGraph
+from angr.sim_state import SimState
+from angr.state_plugins.solver import SimSolver
 
 from . import ExplorationTechnique
 
@@ -48,7 +48,7 @@ class RedundantStateDetector(ExplorationTechnique):
         self.last_state = simgr.stashes["active"][0]
 
     def step(self, simgr, stash="active", **kwargs):
-        simgr = simgr.step(stash=stash, num_inst=1, **kwargs)
+        simgr = simgr.step(stash=stash, **kwargs)
 
         if len(simgr.stashes[stash]) > 1:
             simgr.split(from_stash=stash, to_stash=self.deferred_stash, limit=1)

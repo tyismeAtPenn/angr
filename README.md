@@ -1,4 +1,4 @@
-# Project Report: Applying Redundant State Detection Techniques to Angr
+# Applying Redundant State Detection Techniques to Angr
 
 This project aims to enhance the angr binary analysis framework by incorporating redundant state detection techniques. Redundant state detection plays a crucial role in improving the efficiency and precision of symbolic execution engines. The project reimplements the redundant state detection algorithms and integrates them into the angr framework, to be more specific, exploration techniques, to optimize its performance on generating the inputs to increase the coverage.
 
@@ -13,7 +13,6 @@ Angr is a binary analysis framework designed to perform program analysis tasks o
 
 ## Proposal
 
-### Architecture
 Angr uses its own simulator to simulate the states in the binary program. However, the way it explore the program is BFS by default. Therefore, we would apply the redundant state detection algorithm by implementing a new DFS-like exploration technique. The primary motivation behind this exploration technique is to enhance the efficiency of the angr framework by focusing on the uniqueness and relevance of states.
 
 Our exploration technique, referred to as the Redundant State Detector, introduces a DFS-like approach to state exploration. It selectively defers exploration of alternative paths, aiming to prioritize and thoroughly investigate unique execution paths. The key components of the technique include:
@@ -24,7 +23,11 @@ Our exploration technique, referred to as the Redundant State Detector, introduc
 
 * Dynamic Dependency Graph: A dynamic dependency graph is maintained to capture dependencies between states. This graph aids in identifying relevant branches and updating the sets of relevant locations.
 
+The technique introduces two stashes: relevant and deferred. The relevant stash holds the active path, while the deferred stash contains alternative paths that are deferred for exploration.
 
+#### Uniqueness Evaluation
+The uniqueness of a path is evaluated by comparing its execution with the other deferred paths. A user-defined similarity function, based on the L2 distance between the counts of state addresses in the path history, is employed by default.
 
-### Algorithm
+#### Updating Dynamic Dependency Graph
+A dynamic dependency graph is utilized to capture dependencies between states. The graph is updated during exploration to assist in identifying relevant branches and updating sets of relevant locations.
 

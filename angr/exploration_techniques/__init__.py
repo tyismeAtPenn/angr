@@ -146,6 +146,7 @@ from .bucketizer import Bucketizer
 from .local_loop_seer import LocalLoopSeer
 from .timeout import Timeout
 from .suggestions import Suggestions
+from .redundant_state_detection import RedundantStateDetector
 
 __all__ = (
     "ExplorationTechnique",
@@ -173,4 +174,5 @@ __all__ = (
     "LocalLoopSeer",
     "Timeout",
     "Suggestions",
+    "RedundantStateDetector"
 )

@@ -1,9 +1,9 @@
 from difflib import SequenceMatcher
 from collections import Counter
 
-from angr.angr.analyses.reaching_definitions.dep_graph import DepGraph
-from angr.angr.sim_state import SimState
-from angr.angr.state_plugins.solver import SimSolver
+from ..analyses.reaching_definitions.dep_graph import DepGraph
+from ..sim_state import SimState
+from ..state_plugins.solver import SimSolver
 
 from . import ExplorationTechnique
 
@@ -48,11 +48,13 @@ class RedundantStateDetector(ExplorationTechnique):
         self.last_state = simgr.stashes["active"][0]
 
     def step(self, simgr, stash="active", **kwargs):
+        if len(simgr.stashes[stash])>0:
+            self.last_state = simgr.stashes[stash][0]
         simgr = simgr.step(stash=stash, num_inst=1, **kwargs)
 
+        # it is on a branch
         if len(simgr.stashes[stash]) > 1:
             simgr.split(from_stash=stash, to_stash=self.deferred_stash, limit=1)
-            return simgr
 
         # if reaches an deadend
         if len(simgr.stashes[stash]) == 0:
@@ -86,14 +88,6 @@ class RedundantStateDetector(ExplorationTechnique):
 
         return simgr
     
-    @staticmethod
-    def is_branch(self,state) -> bool:
-        # TODO: find a way to decide whether it is on a branch
-        curr_inst = state.solver.eval(state.regs.pc)
-        if curr_inst.mnemonic.startswith("cmp"):
-            return True
-        return False
-    
     def UpdateRelBranchSet(self, state):
         if self.is_branch(state):
             # TODO: if it only has one successor with another one uncovered
@@ -112,27 +106,41 @@ class RedundantStateDetector(ExplorationTechnique):
         if state.addr not in self.visited:
             self.graph.add_node(state.addr)
             self.graph.add_edge(self.last_state.addr,state.addr)
+   
+            
+    def filter_constraints_for(self,var,ori_constraints):
+        result = []
+        for constraint in ori_constraints:
+            for otherVar in constraint.leaf_asts():
+                if var.structurally_match(otherVar):
+                    result.append(constraint)
+        return result
 
     def find_match(self, state: SimState)->bool:
+        if state.addr not in self.rel_loc_sets:
+            return False
         # compare the current with rel_loc_sets' constraints
-        prev_constraints = self.rel_loc_sets[state.addr]
+        # prev_constraints would be a dict from symbol.key -> constraint
+        prev_constraints : dict = self.rel_loc_sets[state.addr]
         # TODO: get constraints only about the symbols
-        curr_constraints = None
+        curr_variables = state.solver.get_variables()
         dummy_solver = SimSolver()
-        prev_c = False
-        for c in prev_constraints:
-            prev_c = prev_c or not c
-        dummy_solver.add(prev_c)        
-        dummy_solver.add(curr_constraints)
-        return not dummy_solver.satisfiable()
+        for var in curr_variables:
+            for prevVar in prev_constraints.keys():
+                if var.structurally_match(prevVar):
+                    dummy_solver.add(prev_constraints[prevVar])
+                    dummy_solver.add(self.filter_constraints_for(var))
+                
+        # if satisfiable like prev: x=1, curr:x=1 then  => match
+        return dummy_solver.satisfiable()
         
 
     def ConstructRelLocSets(self, state):
         # TODO: unfinished, should it be constructed only once
         # we have reached the end update the RelLocSets
-        for symbol, states in self.relevant_symb_loc.items():
+        for symbol, ori_state in self.relevant_symb_loc.items():
             if symbol in self.relevant_branch_loc:                
-                path = self.graph.find_path(self.defined_loc[state],self.relevant_symb_loc[state])
+                path = self.graph.find_path(self.defined_loc[symbol],self.relevant_symb_loc[symbol])
                 for node in path:
                     # TODO: refine relLocSets where doesn't have a value
                     if node not in self.rel_loc_sets:

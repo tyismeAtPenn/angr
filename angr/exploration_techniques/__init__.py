@@ -146,7 +146,8 @@ from .bucketizer import Bucketizer
 from .local_loop_seer import LocalLoopSeer
 from .timeout import Timeout
 from .suggestions import Suggestions
-from angr.exploration_techniques.klee_coverage_optimization_algorithm import KLEERandPathSelection
+from angr.exploration_techniques.klee_rand_path_selection import KLEERandPathSelection
+from .redundant_state_detection import RedundantStateDetector
 
 __all__ = (
     "ExplorationTechnique",
@@ -175,4 +176,5 @@ __all__ = (
     "Timeout",
     "Suggestions",
     "KLEERandPathSelection",
+    "RedundantStateDetector"
 )

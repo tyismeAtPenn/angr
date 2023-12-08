@@ -1,61 +1,33 @@
-# angr
+# Applying Redundant State Detection Techniques to Angr
 
-[![Latest Release](https://img.shields.io/pypi/v/angr.svg)](https://pypi.python.org/pypi/angr/)
-[![Python Version](https://img.shields.io/pypi/pyversions/angr)](https://pypi.python.org/pypi/angr/)
-[![PyPI Statistics](https://img.shields.io/pypi/dm/angr.svg)](https://pypistats.org/packages/angr)
-[![License](https://img.shields.io/github/license/angr/angr.svg)](https://github.com/angr/angr/blob/master/LICENSE)
+This project aims to enhance the angr binary analysis framework by incorporating redundant state detection techniques. Redundant state detection plays a crucial role in improving the efficiency and precision of symbolic execution engines. The project reimplements the redundant state detection algorithms and integrates them into the angr framework, to be more specific, exploration techniques, to optimize its performance on generating the inputs to increase the coverage.
 
-angr is a platform-agnostic binary analysis framework.
-It is brought to you by [the Computer Security Lab at UC Santa Barbara](https://seclab.cs.ucsb.edu), [SEFCOM at Arizona State University](https://sefcom.asu.edu), their associated CTF team, [Shellphish](https://shellphish.net), the open source community, and **[@rhelmot](https://github.com/rhelmot)**.
+## Introduction
 
-## Project Links
-Homepage: https://angr.io
+### Binary Analysis
+Binary analysis is the process of examining and understanding the behavior and structure of binary code, which is the machine code that computers execute directly. In the context of computer science and cybersecurity, binary analysis is a crucial aspect of various tasks, including reverse engineering, vulnerability discovery, malware analysis, and program understanding. 
 
-Project repository: https://github.com/angr/angr
+### Angr
 
-Documentation: https://docs.angr.io
+Angr is a binary analysis framework designed to perform program analysis tasks on binary code. It is written in Python and provides a set of tools and libraries for analyzing and understanding the behavior of binary programs. Angr is particularly useful for tasks such as symbolic execution, concolic execution, and static analysis of binary code.
 
-API Documentation: https://api.angr.io/en/latest/
+## Proposal
 
-## What is angr?
+Angr uses its own simulator to simulate the states in the binary program. However, the way it explore the program is BFS by default. Therefore, we would apply the redundant state detection algorithm by implementing a new DFS-like exploration technique. The primary motivation behind this exploration technique is to enhance the efficiency of the angr framework by focusing on the uniqueness and relevance of states.
 
-angr is a suite of Python 3 libraries that let you load a binary and do a lot of cool things to it:
+Our exploration technique, referred to as the Redundant State Detector, introduces a DFS-like approach to state exploration. It selectively defers exploration of alternative paths, aiming to prioritize and thoroughly investigate unique execution paths. The key components of the technique include:
 
-- Disassembly and intermediate-representation lifting
-- Program instrumentation
-- Symbolic execution
-- Control-flow analysis
-- Data-dependency analysis
-- Value-set analysis (VSA)
-- Decompilation
+* Path Deferral: The technique selectively defers alternative paths during exploration, allowing the analysis to concentrate on a single active path at a time.
 
-The most common angr operation is loading a binary: `p = angr.Project('/bin/bash')` If you do this in an enhanced REPL like IPython, you can use tab-autocomplete to browse the [top-level-accessible methods](https://docs.angr.io/docs/toplevel) and their docstrings.
+* Path Similarity Calculation: The uniqueness of each path is determined by computing the average similarity between the active path and the deferred paths. Similarity is calculated based on a user-defined similarity function.
 
-The short version of "how to install angr" is `mkvirtualenv --python=$(which python3) angr && python -m pip install angr`.
+* Dynamic Dependency Graph: A dynamic dependency graph is maintained to capture dependencies between states. This graph aids in identifying relevant branches and updating the sets of relevant locations.
 
-## Example
+The technique introduces two stashes: relevant and deferred. The relevant stash holds the active path, while the deferred stash contains alternative paths that are deferred for exploration.
 
-angr does a lot of binary analysis stuff.
-To get you started, here's a simple example of using symbolic execution to get a flag in a CTF challenge.
+#### Uniqueness Evaluation
+The uniqueness of a path is evaluated by comparing its execution with the other deferred paths. A user-defined similarity function, based on the L2 distance between the counts of state addresses in the path history, is employed by default.
 
-```python
-import angr
+#### Updating Dynamic Dependency Graph
+A dynamic dependency graph is utilized to capture dependencies between states. The graph is updated during exploration to assist in identifying relevant branches and updating sets of relevant locations.
 
-project = angr.Project("angr-doc/examples/defcamp_r100/r100", auto_load_libs=False)
-
-@project.hook(0x400844)
-def print_flag(state):
-    print("FLAG SHOULD BE:", state.posix.dumps(0))
-    project.terminate_execution()
-
-project.execute()
-```
-
-# Quick Start
-
-- [Install Instructions](https://docs.angr.io/introductory-errata/install)
-- Documentation as [HTML](https://docs.angr.io/) and sources in the angr [Github repository](https://github.com/angr/angr/tree/master/docs)
-- Dive right in: [top-level-accessible methods](https://docs.angr.io/core-concepts/toplevel)
-- [Examples using angr to solve CTF challenges](https://docs.angr.io/examples).
-- [API Reference](https://angr.io/api-doc/)
-- [awesome-angr repo](https://github.com/degrigis/awesome-angr)

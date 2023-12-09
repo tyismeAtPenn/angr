@@ -1,4 +1,3 @@
-import logging
 import random
 
 from angr.exploration_techniques import ExplorationTechnique

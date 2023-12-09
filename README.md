@@ -20,7 +20,7 @@ Ye Tian - tyisme@seas.upenn.edu
 - ```angr/analysis_output```
 
 ## How to run:
-- Step 1: Clone this repo, ```cd angr`
+- Step 1: Clone this repo, ```cd angr```
 
 - Step 2: ```python klee_random_path_selection_analysis.py```
 

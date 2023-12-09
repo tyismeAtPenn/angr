@@ -1,8 +1,16 @@
 # Applying Redundant State Detection Techniques to Angr
 
-This project aims to enhance the angr binary analysis framework by incorporating redundant state detection techniques. Redundant state detection plays a crucial role in improving the efficiency and precision of symbolic execution engines. The project reimplements the redundant state detection algorithms and integrates them into the angr framework, to be more specific, exploration techniques, to optimize its performance on generating the inputs to increase the coverage.
+## Members:
+Cuong Nguyen - cuongnd@seas.upenn.edu
+Ye Tian - tyisme@seas.upenn.edu
 
-## Introduction
+## Organization:
+- Our implementation for KLEE Random Path Selection Algorithm and Redundant State Detection Algorithm:
++ angr/angr/exploration_techniques/klee_rand_path_selection.py
++ angr/angr/exploration_techniques/redundant_state_detection.py
+
+
+
 
 ### Binary Analysis
 Binary analysis is the process of examining and understanding the behavior and structure of binary code, which is the machine code that computers execute directly. In the context of computer science and cybersecurity, binary analysis is a crucial aspect of various tasks, including reverse engineering, vulnerability discovery, malware analysis, and program understanding. 
